@@ -57,3 +57,89 @@ So, I created this Partskite/Partsklassy script to create a copy of the Kite glo
 
 I made this just for fun. Maybe this is just a temporary solution.
 
+
+## How it Works
+
+Klassy [8 Feb 2026] has a global Kite theme with 4 types stored in `/usr/share/plasma/look-and-feel`, including:
+
+- Kite Light Left Panel
+- Kite Dark Left Panel
+- Kite Light Bottom Panel (`org.kde.klassykitelightbottompanel.desktop`)
+- Kite Dark Bottom Panel (`org.kde.klassykitedarkbottompanel.desktop`)
+
+The folder to be copied (read: duplicated) are the Kite Light Bottom Panel and Kite Dark Bottom Panel. This is roughly the structure of the files to be copied.
+
+```
+contents
+    ...
+    plasmoidsetupscripts
+        ...
+    defaults
+metadata.json
+```
+
+The `metadata.json` file will be edited like this:
+
+```
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "kde@paulmcauley.com",
+                "Name": "Paul A McAuley"
+            }
+        ],
+        "Category": "",
+        "Description": "[Light / Dark] theme with savable configurations",
+        "Id": "[FOLDER NAME]",
+        "License": "LGPL 2.1",
+        "Name": "[GLOBAL THEME NAME]",
+        "Website": "https://github.com/paulmcauley/klassy"
+    },
+    "X-Plasma-APIVersion": "2"
+}
+```
+
+The `defaults` file will be edited like this:
+
+```
+[kcminputrc][Mouse]
+cursorTheme=breeze_cursors
+
+[kdeglobals][General]
+ColorScheme=[BreezeLight / BreezeDark]
+
+[kdeglobals][Icons]
+Theme=[klassy / klassy-dark]
+
+[kdeglobals][KDE]
+widgetStyle=Klassy
+
+[kwinrc][org.kde.kdecoration2]
+library=org.kde.klassy
+theme=Klassy
+
+[plasmarc][Theme]
+name=default
+
+[KSplash]
+Theme=org.kde.Breeze
+```
+
+You will be asked to fill in:
+- Global theme name with these options <br>
+  Filling `[GLOBAL THEME NAME]`
+
+- Save location, with options:
+  - User-only `~/.local/share/plasma/look-and-feel` (good for easy deletion)
+  - System-wide `/usr/share/plasma/look-and-feel` (like default Klassy global themes placed)
+  - Custom (for testing or create-share purpose)
+
+
+Once completed and confirmed, the two previous folders will be copied with the new contents and names that have been adjusted according to the information you provided.
+
+
+## Credit
+
+- paulmcauley (Paul A McAuley), klassy, GitHub
