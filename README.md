@@ -1,3 +1,6 @@
+> [!NOTE]
+> You don't need to use `partskite-klassy-maker` script for KDE Plasma version 6.6 or latest
+
 # partskite-klassy-maker
 
 Shell script to create (read: duplicate) a new customizable Klassy-Breeze global theme from installed Kite global theme, which savable &amp; remember with your configurations when light/dark theme changes.
